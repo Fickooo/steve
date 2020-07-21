@@ -13,7 +13,7 @@ const activities_list = [
 client.on("ready", () => {
   console.log("Bot is online.")
    let statuses = [
-        `oof!help`,
+        `s!help`,
         "by Otaku Devs"
     ]
 
