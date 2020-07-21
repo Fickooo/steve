@@ -5,7 +5,7 @@ module.exports = {
   name: "help", 
   category: "info", 
   description: "Pokazuje sve prisutne komande.", 
-  usage: "s!help", 
+  usage: "oof!help", 
   aliases: ["pomoc"], 
   run: async (client, message, args) => {
         
