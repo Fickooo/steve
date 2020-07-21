@@ -5,13 +5,13 @@ module.exports = {
   name: "help", 
   category: "info", 
   description: "Pokazuje sve prisutne komande.", 
-  usage: "oof!help", 
+  usage: "s!help", 
   aliases: ["pomoc"], 
   run: async (client, message, args) => {
         
     let helpEmbed = new MessageEmbed()
-      .setTitle("OOFEngine | Commands")
-      .setDescription("**Prefix:** `oof!`")
+      .setTitle("Steve | Commands")
+      .setDescription("**Prefix:** `s!`")
       .setColor("#F8AA2A")
       .addFields(
 		  { name: 'Fun `😂`', value: '`gay`, `avatar`, `roast`, `dab`, `meme`, `say`' },
