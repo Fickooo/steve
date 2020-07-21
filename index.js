@@ -13,7 +13,7 @@ const activities_list = [
 client.on("ready", () => {
   console.log("Bot is online.")
    let statuses = [
-        `oof!help`,
+        `s!help`,
         "by Otaku Devs"
     ]
 
@@ -30,7 +30,7 @@ client.aliases = new Discord.Collection();
     require(`./handleri/${handler}`)(client);
 }); 
 client.on("message", async message => {
-  let prefix = "oof!"; 
+  let prefix = "s!"; 
    client.emit('checkMessage', message); 
    if(message.channel.type == "dm") return; 
       if (message.author.bot) return;
