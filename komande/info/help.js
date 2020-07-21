@@ -19,7 +19,7 @@ module.exports = {
 		  { name: 'Info `ℹ️`', value: '`ping`, `help`, `uptime`', inline: true },
       { name: 'Utilities `⚙️`', value: '`clear`,`setlogschannel (slc)`,`setmuterole (smr)`' }
       )
-      .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FOOOF.png')
+      .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
       .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
 
     helpEmbed.setTimestamp();
