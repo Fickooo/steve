@@ -12,7 +12,7 @@ module.exports = {
     let helpEmbed = new MessageEmbed()
       .setTitle("Steve | Commands")
       .setDescription("**Prefix:** `s!`")
-      .setColor("#F8AA2A")
+      .setColor("#0052CC")
       .addFields(
 		  { name: 'Fun `😂`', value: '`gay`, `avatar`, `roast`, `dab`, `meme`, `say`' },
       { name: 'Moderation `💻`', value: '`ban`, `kick`, `mute`' },

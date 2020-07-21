@@ -11,7 +11,7 @@ module.exports = {
     
     let oofovan_kick = message.mentions.users.first()
 
-    if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can't OOF users without a permission.").then(m => m.delete({timeout: 5000}));
+    if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can't kick users without a permission.").then(m => m.delete({timeout: 5000}));
     
     if(!oofovan_kick) return message.reply("it's not possible to kick air you know?").then(m => m.delete({timeout: 5000}));
     

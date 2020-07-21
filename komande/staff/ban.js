@@ -11,7 +11,7 @@ module.exports = {
     
     let oofovan_ban = message.mentions.users.first()
 
-    if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can't OOF users without a permission.").then(m => m.delete({timeout: 5000}));
+    if(!message.member.hasPermission("BAN_MEMBERS")) return message.reply("you can't ban users without a permission.").then(m => m.delete({timeout: 5000}));
     
     if(!oofovan_ban) return message.reply("it's not possible to ban air you know?").then(m => m.delete({timeout: 5000}));
     
