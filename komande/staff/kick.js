@@ -27,7 +27,7 @@ module.exports = {
       message.reply("i can't send much detailes about this kick without log's channel.").then(m => m.delete({timeout: 5000}));
        
       let miniembed = new Discord.MessageEmbed()
-        .setTitle("`✅` User is oofed")
+        .setTitle("`✅` User is kicked")
         .setColor("#eb3d34")
         .setDescription("<@" + oofovan_kick + ">" + " was kicked from " + message.guild.name)
        message.channel.send(miniembed)

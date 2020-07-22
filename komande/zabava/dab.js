@@ -14,20 +14,7 @@ module.exports = {
     
   let target = message.mentions.users.first() || message.author;
     
-    if(target.id === "663093851845689364"){
-      
-          const canvas = Canvas.createCanvas(256, 256);
-    const ctx = canvas.getContext('2d');
     
-    const background = await Canvas.loadImage('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FOOOF.png');
-    
-    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-
-	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'dab.png');
-
-	return message.channel.send(`Dab, ${message.author}`, attachment);
-      
-    }
     
     const canvas = Canvas.createCanvas(256, 256);
     const ctx = canvas.getContext('2d');

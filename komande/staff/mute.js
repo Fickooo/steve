@@ -26,7 +26,7 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
     const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
       .setColor("#fc0303")
-      .setDescription("Usage **oof!mute @user#0000 1s/m/h/d reason**")
+      .setDescription("Usage **s!mute @user#0000 1s/m/h/d reason**")
     return message.channel.send(pomoc)
   }
   let tomute = message.guild.member(message.mentions.users.first());
@@ -34,7 +34,7 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
   if(!reason){
         const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
-      .setDescription("Usage **oof!mute @user#0000 1s/m/h/d reason**")
+      .setDescription("Usage **s!mute @user#0000 1s/m/h/d reason**")
       .setColor("#fc0303")
    return message.channel.send(pomoc)
   }
@@ -46,7 +46,7 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
           const error = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
             .setColor("#fc0303")
-      .setDescription("I didn't found mute role, try adding it with command\n`" + " " + "oof!smr @role (setmuterole)`")
+      .setDescription("I didn't found mute role, try adding it with command\n`" + " " + "s!smr @role (setmuterole)`")
    return message.channel.send(error)
   }
 
@@ -91,7 +91,7 @@ if(!mutetime){
   .addField("Time", mutetime, true)
   .addField("Reason", reason, true)
   .setTimestamp()
-  .setFooter("OOF Logs", client.user.displayAvatarURL())
+  .setFooter("Steve Logs", client.user.displayAvatarURL())
   .setColor("#fc0303")
   incidentiChannel.send(muteembed);
 
