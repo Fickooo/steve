@@ -10,6 +10,8 @@ const activities_list = [
     "by Otaku Devs"
     ]; 
 
+
+
 client.on("ready", () => {
   console.log("Bot is online.")
    let statuses = [
@@ -19,7 +21,7 @@ client.on("ready", () => {
 
     setInterval(function() {
         let status = statuses[Math.floor(Math.random() * statuses.length)];
-        client.user.setActivity(status, {type: "WATCHING"});
+        client.user.setActivity(status, {type: "PLAYING"});
     }, 10000)
 })
 
@@ -57,28 +59,6 @@ client.on("message", async message => {
     if (!message.content.startsWith(prefix)) return;
 
 
-//     if (cmd === "say") {
-//         if(message.deletable) message.delete();
-//         if(message.content.includes("@everyone") || ("@here")) return message.reply("You can not tag everyone!") 
-//         if(args.length < 1) return message.reply("OOF, Nothing to say 😔 ?").then(m => m.delete({timeout: 5000}));
-
-//         const roleColor = message.guild.me.displayHexColor === "#000000" ? "#ffffff" : message.guild.me.displayHexColor;
-
-//         if (args[0].toLowerCase() === "embed") {
-//           const embed = new MessageEmbed()
-//            .setColor(roleColor)
-//            .setDescription(args.slice(1).join(" "))
-//            .setTimestamp()
-//            .setImage(client.user.displayAvatarURL)
-//            .setAuthor(message.author.username, message.author.displayAvatarURL())
-//            .setFooter(client.user.username, client.user.displayAvatarURL())
-
-//           message.channel.send(embed);
-//         } else {
-//           message.channel.send(args.join(" "));
-//         }
-//     }
-
     if (message.channel.type != 'text' || message.author.bot)
     return;
 
@@ -107,6 +87,10 @@ client.on("message", async message => {
     }
   }
 });
+
+
+
+
 
  
 

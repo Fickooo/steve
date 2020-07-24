@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 
 
 module.exports = {
-  name: "ping", 
+  name: "ping",
   category: "ping", 
   description: "ping", 
   usage: "ping", 

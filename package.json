@@ -19,7 +19,8 @@
     "canvas": "^2.6.1",
     "random-puppy": "^1.1.0",
     "dev-noblox": "^4.6.1",
-    "quick.db": "^7.1.1"
+    "quick.db": "^7.1.1",
+    "common-tags": "^1.8.0"
   },
   "engines": {
     "node": "12.x"

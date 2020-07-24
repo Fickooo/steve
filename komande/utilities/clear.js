@@ -8,6 +8,8 @@ module.exports = {
 
     async run (client, message, args) {
 
+        if(message.deletable) message.delete();
+      
         const amount = args.join(" ");
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("you don't have a permission to do that!");
     

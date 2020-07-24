@@ -11,6 +11,8 @@ module.exports = {
   run: async (client, message, args) => {
     //<a:neuspesno:675279906170601473>
     
+  if(message.deletable) message.delete();  
+    
   const muteroleid = await db.fetch(`${message.guild.id}_muterole`);
 
 const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
@@ -26,7 +28,7 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
     const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
       .setColor("#fc0303")
-      .setDescription("Usage **s!mute @user#0000 1s/m/h/d reason**")
+      .setDescription("You must tag the user that you want to mute!")
     return message.channel.send(pomoc)
   }
   let tomute = message.guild.member(message.mentions.users.first());
@@ -34,7 +36,7 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
   if(!reason){
         const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
-      .setDescription("Usage **s!mute @user#0000 1s/m/h/d reason**")
+      .setDescription("You have to provide a reason for that mute!")
       .setColor("#fc0303")
    return message.channel.send(pomoc)
   }
@@ -91,7 +93,7 @@ if(!mutetime){
   .addField("Time", mutetime, true)
   .addField("Reason", reason, true)
   .setTimestamp()
-  .setFooter("Steve Logs", client.user.displayAvatarURL())
+  .setFooter("Steve | Logs", client.user.displayAvatarURL())
   .setColor("#fc0303")
   incidentiChannel.send(muteembed);
 

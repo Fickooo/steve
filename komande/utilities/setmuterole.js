@@ -9,6 +9,8 @@ module.exports = {
   aliases: ["smr", "muterole"], 
   run: async (client, message, args) => {
     
+  if(message.deletable) message.delete();  
+    
   if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("you don't have permission for this command!").then(m => m.delete({timeout: 5000}));
     
   let mutedRole = message.mentions.roles.first();

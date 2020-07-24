@@ -13,7 +13,7 @@ module.exports = {
         if(message.deletable) message.delete();
         if(message.content.includes("@everyone")) return message.reply("You can not tag everyone!").then(m => m.delete({timeout: 5000}));
         if(message.content.includes("@here")) return message.reply("You can not tag everyone").then(m => m.delete({timeout: 5000}));
-        if(args.length < 1) return message.reply("OOF, Nothing to say 😔 ?").then(m => m.delete({timeout: 5000}));
+        if(args.length < 1) return message.reply("Nothing to say 😔?").then(m => m.delete({timeout: 5000}));
 
         const roleColor = message.guild.me.displayHexColor === "#000000" ? "#ffffff" : message.guild.me.displayHexColor;
 

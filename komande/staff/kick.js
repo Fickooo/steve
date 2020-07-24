@@ -9,6 +9,8 @@ module.exports = {
   aliases: [""], 
   run: async (client, message, args) => {
     
+    if(message.deletable) message.delete();
+    
     let oofovan_kick = message.mentions.users.first()
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return message.reply("you can't kick users without a permission.").then(m => m.delete({timeout: 5000}));
@@ -43,6 +45,7 @@ module.exports = {
         .addField("Reason", reason)
         .setTimestamp()
         .setDescription("<@" + oofovan_kick + ">" + " is kicked from " + message.guild.name)
+        .setFooter("Steve | Logs", client.user.displayAvatarURL())
        findchannel.send(bigembed)
       
       message.guild.member(oofovan_kick).kick(reason);
