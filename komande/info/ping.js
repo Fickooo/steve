@@ -1,6 +1,4 @@
-//eee smo tu
 
-//e sad ovo
 const Discord = require('discord.js');
 
 

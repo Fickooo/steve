@@ -8,6 +8,9 @@ dependencies:
   express: 4.17.1
   fs: 0.0.2
   http: 0.0.0
+  moment: 2.27.0
+  ms: 2.1.2
+  os: 0.1.1
   quick.db: 7.1.1
   random-puppy: 1.1.0
 packages:
@@ -1077,6 +1080,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
+  /moment/2.27.0:
+    dev: false
+    resolution:
+      integrity: sha512-al0MUK7cpIcglMv3YF13qSgdAIqxHTO7brRtaz3DlSULbqfazqkc5kEjNrLDOM7fsjshoFIihnU8snrP7zUvhQ==
   /ms/2.0.0:
     dev: false
     resolution:
@@ -1233,6 +1240,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-u+Z0BseaqFxc/sdm/lc0VV36EnQ=
+  /os/0.1.1:
+    dev: false
+    resolution:
+      integrity: sha1-IIhF6J4ZOtTZcUdLk5R3NqVtE/M=
   /osenv/0.1.5:
     dependencies:
       os-homedir: 1.0.2
@@ -1887,5 +1898,8 @@ specifiers:
   express: ^4.17.1
   fs: ^0.0.2
   http: ^0.0.0
+  moment: ^2.27.0
+  ms: ^2.1.2
+  os: ^0.1.1
   quick.db: ^7.1.1
   random-puppy: ^1.1.0
