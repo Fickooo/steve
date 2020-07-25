@@ -8,14 +8,15 @@ const client = new Client({
 const activities_list = [
     "oof!help", 
     "by Otaku Devs",
-    "V2 Released Officially!"
+    "Official: V2 Released!"
     ]; 
 
 client.on("ready", () => {
   console.log("Bot is online.")
    let statuses = [
         `s!help`,
-        "by Otaku Devs"
+        "by Otaku Devs",
+        "Official: V2 Released!" 
     ]
 
     setInterval(function() {

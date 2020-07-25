@@ -52,7 +52,7 @@ module.exports = {
                                         }
                                         if(result === "✂️"){
                                            let userlost = new Discord.MessageEmbed()
-                                            .setTitle("You won!")
+                                            .setTitle("I won!")
                                             .setDescription("I picked " + result + " and you picked 📄")
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
