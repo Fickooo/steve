@@ -9,7 +9,7 @@ module.exports = {
   aliases: [""],
   run: async (client, message, args) => {
 
-  if(!message.member.hasPermission('EMBED_LINKS')) return message.reply("I'm sorry, but I am not allowed to send you the link. Ask the administrators they can edit my permissions.").then(m => m.delete({timeout: 5000}));
+  if(!message.member.hasPermission('EMBED_LINKS')) return message.reply("Looks like you don't have a permission to do that.").then(m => m.delete({timeout: 5000}));
     
   let inviteembed = new Discord.MessageEmbed()
    .setAuthor(message.author.username, message.author.displayAvatarURL())
