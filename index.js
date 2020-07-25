@@ -7,10 +7,9 @@ const client = new Client({
 });
 const activities_list = [
     "oof!help", 
-    "by Otaku Devs"
+    "by Otaku Devs",
+    "V2 Released Officially!"
     ]; 
-
-
 
 client.on("ready", () => {
   console.log("Bot is online.")
