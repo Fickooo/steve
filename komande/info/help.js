@@ -14,9 +14,9 @@ module.exports = {
       .setDescription("**Prefix:** `s!`")
       .setColor("#0052CC")
       .addFields(
-		  { name: 'Fun `😂`', value: '`gay`, `roast`, `dab`, `meme`, `say`, `8ball`' },
+		  { name: 'Fun `😂`', value: '`gay`, `roast`, `dab`, `meme`, `say`, `8ball`, `rps`' },
       { name: 'Moderation `💻`', value: '`ban`, `kick`, `mute`' },
-		  { name: 'Info `ℹ️`', value: '`ping`, `help`, `uptime`, `avatar`', inline: true },
+		  { name: 'Info `ℹ️`', value: '`ping`, `help`, `uptime`, `avatar`, `server-info`, `invite`, `user-info`', inline: true },
       { name: 'Utilities `⚙️`', value: '`clear`,`slc (SetLogsChannel)`,`smr (SetMuteRole)`, `src (SetReportChannel)`,`ssc (SetSuggestionChannel)`, `report`, `suggest`' }
       )
       .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
