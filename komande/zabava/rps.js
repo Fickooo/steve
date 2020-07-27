@@ -39,7 +39,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(draw)
                                         }//ma ez
                                         if(result === "🗿"){
                                            let botlost = new Discord.MessageEmbed()
@@ -48,7 +48,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(botlost)
                                         }
                                         if(result === "✂️"){
                                            let userlost = new Discord.MessageEmbed()
@@ -57,7 +57,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(userlost)
                                         }
                                     }
                    //aj
@@ -70,7 +70,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(draw)
                                         }//ma ez
                                         if(result === "🗿"){
                                            
@@ -80,7 +80,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(botlost)
                                         }
                                         if(result === "✂️"){
                                            let userlost = new Discord.MessageEmbed()
@@ -89,7 +89,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(userlost)
                                       
                                     } 
                                     }
@@ -103,7 +103,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(draw)
                                         }
                                         if(result === "🗿"){
                                            
@@ -113,7 +113,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(botlost)
                                         }
                                         if(result === "✂️"){
                                            let userlost = new Discord.MessageEmbed()
@@ -122,7 +122,7 @@ module.exports = {
                                             .setColor("RANDOM")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          message.edit(pokrecemo)
+                                          m.edit(userlost)
                                        
                                        
                                      }
