@@ -37,7 +37,7 @@ module.exports = {
      }
     
      let reportembed = new Discord.MessageEmbed()
-      .setTitle("`❗️❗️❗️` " + target.user.username + " was reported")
+      .setTitle("`❗️` " + target.user.username + " was reported")
       .setColor("#eb3d34")
       .addField("`🔍` Reported:", "<@" + target.id + ">" )
       .addField("`📍` In Channel:", "<#" + message.channel.id + ">")
