@@ -17,8 +17,6 @@ module.exports = {
     
      if(target == message.author) message.reply("you can't report yourself!")
     
-     if(target.hasPermission("BAN_MEMBERS") || target.user.bot) return message.reply("you can't report that user.").then(m => m.delete({timeout: 5000}));
-    
      let reason = args.join(" ").slice(22)
      
      if(!reason) return message.reply("please provide a reason for that report!").then(m => m.delete({timeout: 5000}));
