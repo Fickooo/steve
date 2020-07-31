@@ -15,7 +15,7 @@ module.exports = {
   
      if(!target) return message.reply("you have to mention the user you want to report.").then(m => m.delete({timeout: 5000}));
     
-     if(target.id == message.author.id) message.reply("you can't report yourself!")
+     if(target.id == message.author.id) message.reply("you can't report yourself!").then(m => m.delete({timeout: 5000}));
     
      let reason = args.join(" ").slice(22)
      
