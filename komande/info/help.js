@@ -16,7 +16,7 @@ module.exports = {
     if(arg == "fun") {
       
       let funHelp = new Discord.MessageEmbed()
-       .setTitle("Steve | Fun 😂")
+       .setTitle("Steve | Fun `😂`")
        .setColor("RANDOM")
        .setDescription('`gay`, `roast`, `dab`, `meme`, `say`, `8ball`, `rps`')
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
@@ -28,7 +28,7 @@ module.exports = {
     if(arg == "mod") {
       
       let funHelp = new Discord.MessageEmbed()
-       .setTitle("Steve | Moderation 💻")
+       .setTitle("Steve | Moderation `💻`")
        .setColor("#000066")
        .setDescription('`ban`, `kick`, `mute`')
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
@@ -40,7 +40,7 @@ module.exports = {
     if(arg == "info") {
       
       let funHelp = new Discord.MessageEmbed()
-       .setTitle("Steve | Info ℹ️")
+       .setTitle("Steve | Info `ℹ️`")
        .setColor("#008000")
        .setDescription('`ping`, `help`, `uptime`, `avatar`, `server-info`, `invite`, `user-info`')
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
@@ -52,7 +52,7 @@ module.exports = {
     if(arg == "util") {
       
       let funHelp = new Discord.MessageEmbed()
-       .setTitle("Steve | Utilities ⚙️")
+       .setTitle("Steve | Utilities `⚙️`")
        .setColor("#666699")
        .setDescription('`clear`,`slc (SetLogsChannel)`,`smr (SetMuteRole)`, `src (SetReportChannel)`,`ssc (SetSuggestionChannel)`, `report`, `suggest`')
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
