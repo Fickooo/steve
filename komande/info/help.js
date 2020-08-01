@@ -39,7 +39,7 @@ module.exports = {
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
-       message.channel.send(funHelp)
+       return message.channel.send(funHelp)
     }
     
     if(arg == "mod") {
@@ -51,7 +51,7 @@ module.exports = {
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
-       message.channel.send(funHelp)
+       return message.channel.send(funHelp)
     } 
     
     if(arg == "info") {
@@ -63,7 +63,7 @@ module.exports = {
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
-       message.channel.send(funHelp)
+       return message.channel.send(funHelp)
     } 
     
     if(arg == "util") {
@@ -75,7 +75,7 @@ module.exports = {
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
-       message.channel.send(funHelp)
+       return message.channel.send(funHelp)
     } 
     
   }
