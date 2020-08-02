@@ -23,6 +23,8 @@ module.exports = {
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
        return message.channel.send(funHelp)
+    } else {
+      return;
     }
     
     if(arg == "mod") {
@@ -35,7 +37,9 @@ module.exports = {
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
        return message.channel.send(funHelp)
-    } 
+    } else {
+      return;
+    }
     
     if(arg == "info") {
       
@@ -47,7 +51,9 @@ module.exports = {
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
        return message.channel.send(funHelp)
-    } 
+    } else {
+      return;
+    }
     
     if(arg == "util") {
       
@@ -59,7 +65,9 @@ module.exports = {
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
        return message.channel.send(funHelp)
-    } 
+    } else {
+      return;
+    }
     
     
     let helpEmbed = new Discord.MessageEmbed()
