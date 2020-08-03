@@ -80,6 +80,7 @@ module.exports = {
     }
 	  } catch(errorr){
 		  message.reply("that category doesn't exist")
+	  }
   } else {    
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Error `🚫`")
