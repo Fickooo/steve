@@ -9,7 +9,6 @@ module.exports = {
   usage: "oof!help", 
   aliases: ["pomoc"], 
   run: async (client, message, args) => {
-     let kategorije = ["fun", "util", "info", "mod"]
     
     let arg = args.join(" ")
     	  if(!arg){
@@ -79,8 +78,7 @@ module.exports = {
        return message.channel.send(funHelp)
     }
   } 
-  if(!kategorije.includes(arg){
-	      
+if(arg !== "util" || "mod" || "fun" || "info"){    
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Error `🚫`")
        .setColor("#fc0303")
@@ -89,8 +87,8 @@ module.exports = {
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()
        return message.channel.send(funHelp).then(m => m.delete({timeout: 5000}));
-	  
-  }
+}
+
 
     
     
