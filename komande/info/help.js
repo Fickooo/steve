@@ -30,6 +30,7 @@ module.exports = {
     return message.channel.send(helpEmbed)
 	  }
   if(arg){  
+	  try{
     if(arg == "fun") {
       
       let funHelp = new Discord.MessageEmbed()
@@ -77,6 +78,8 @@ module.exports = {
        .setTimestamp()
        return message.channel.send(funHelp)
     }
+	  } catch(errorr){
+		  message.reply("that category doesn't exist")
   } else {    
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Error `🚫`")
