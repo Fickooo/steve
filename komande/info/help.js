@@ -27,7 +27,7 @@ module.exports = {
 
     helpEmbed.setTimestamp();
 
-    message.channel.send(helpEmbed)
+    return message.channel.send(helpEmbed)
 	  }
   if(arg){  
     if(arg == "fun") {
