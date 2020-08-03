@@ -14,10 +14,9 @@ module.exports = {
   let inviteembed = new Discord.MessageEmbed()
    .setAuthor(message.author.username, message.author.displayAvatarURL())
    .setFooter(client.user.username, client.user.displayAvatarURL())
-   .setTitle("Invite | Support `📊`")
-    .setDescription("My invite link is [here](https://discordapp.com/oauth2/authorize?client_id=663093851845689364&scope=bot&permissions=2146958847)`💌`\nMy support server invite [link](https://discord.gg/FNZhrn5)`📬`")
+   .setTitle("My invite link `⛓️`")
+   .setURL('https://discordapp.com/oauth2/authorize?client_id=663093851845689364&scope=bot&permissions=2146958847')
    .setTimestamp()
-  .setColor("#000099")
    .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
   return message.channel.send(inviteembed)
 

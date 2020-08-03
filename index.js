@@ -8,7 +8,7 @@ const client = new Client({
 const activities_list = [
     "oof!help", 
     "by Otaku Devs",
-    "v2.1"
+    "v3 in development!"
     ]; 
 
 client.on("ready", () => {
@@ -16,7 +16,7 @@ client.on("ready", () => {
    let statuses = [
         `s!help`,
         "by Otaku Devs",
-        "v2.1" 
+        "v3 in development!" 
     ]
 
     setInterval(function() {
