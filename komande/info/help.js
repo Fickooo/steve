@@ -77,8 +77,7 @@ module.exports = {
        .setTimestamp()
        return message.channel.send(funHelp)
     }
-  } 
-if(arg !== "util" || "mod" || "fun" || "info"){    
+  } else {    
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Error `🚫`")
        .setColor("#fc0303")
