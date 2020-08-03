@@ -73,7 +73,7 @@ module.exports = {
        return message.channel.send(funHelp).then(m => m.delete({timeout: 5000}));
 	  
   }
-	  if(arg!){
+	  if(!arg){
     let helpEmbed = new Discord.MessageEmbed()
       .setTitle("Steve | Commands")
       .setDescription("**Prefix:** `s!`")
