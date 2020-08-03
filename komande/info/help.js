@@ -12,7 +12,7 @@ module.exports = {
      
     
     let arg = args.join(" ")
-    
+  if(arg){  
     if(arg == "fun") {
       
       let funHelp = new Discord.MessageEmbed()
@@ -60,8 +60,20 @@ module.exports = {
        .setTimestamp()
        return message.channel.send(funHelp)
     }
-    
-    
+  } else {
+  
+	      
+      let funHelp = new Discord.MessageEmbed()
+       .setTitle("Steve | Error `🚫`")
+       .setColor("#fc0303")
+       .setDescription("Category that you specified doesn't exist.")
+       .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
+       .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
+       .setTimestamp()
+       return message.channel.send(funHelp).then(m => m.delete({timeout: 5000}));
+	  
+  }
+	  if(arg){
     let helpEmbed = new Discord.MessageEmbed()
       .setTitle("Steve | Commands")
       .setDescription("**Prefix:** `s!`")
@@ -78,7 +90,7 @@ module.exports = {
     helpEmbed.setTimestamp();
 
     message.channel.send(helpEmbed)
-    
+	  }
     
     
     
