@@ -69,7 +69,7 @@ module.exports = {
         dateString = dateString.slice(0, dateString.length - 2) + dateString.slice(dateString.length - 1);
         dateString += 'and ';
     }
-    let allservers = client.guilds.cache.size - 1
+    let allservers = client.guilds.cache.size 
     dateString += dateStrings[dateStrings.length - 1];
     const embed = new Discord.MessageEmbed()
   .setTimestamp()
