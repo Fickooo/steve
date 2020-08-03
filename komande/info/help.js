@@ -9,7 +9,7 @@ module.exports = {
   usage: "oof!help", 
   aliases: ["pomoc"], 
   run: async (client, message, args) => {
-     
+     let kategorije = {"fun", "util", "info", "mod"}
     
     let arg = args.join(" ")
     	  if(!arg){
@@ -78,8 +78,8 @@ module.exports = {
        .setTimestamp()
        return message.channel.send(funHelp)
     }
-  } else {
-  
+  } 
+  if(!kategorije.includes(arg){
 	      
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Error `🚫`")
