@@ -35,7 +35,7 @@ module.exports = {
     .addField("`💽` CPU Cores", os.cpus().length, true) 
     .addField("`💻` Model", core.model, true) 
     .addField("`⏲️` CPU Speed", core.speed + "MHz", true)
-    .addField("`💾` Total memory", formatBytes(process.memoryUsage().heapTotal), true)
+    .addField("`💾` Total memory", formatBytes(process.memoryUsage().heapTotal) + 500, true)
     .addField("`📊` Used memory", formatBytes(process.memoryUsage().heapUsed), true)
     .setTimestamp()
     .setAuthor(message.author.username, message.author.displayAvatarURL())
