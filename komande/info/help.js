@@ -12,6 +12,24 @@ module.exports = {
      
     
     let arg = args.join(" ")
+    	  if(!arg){
+    let helpEmbed = new Discord.MessageEmbed()
+      .setTitle("Steve | Commands")
+      .setDescription("**Prefix:** `s!`")
+      .setColor("#0052CC")
+      .addFields(
+		  { name: 'Fun `😂`', value: '`s!help fun`' },
+      { name: 'Moderation `💻`', value: '`s!help mod`' },
+		  { name: 'Info `ℹ️`', value: '`s!help info`', inline: true },
+      { name: 'Utilities `⚙️`', value: '`s!help util`' }
+      )
+      .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
+      .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
+
+    helpEmbed.setTimestamp();
+
+    message.channel.send(helpEmbed)
+	  }
   if(arg){  
     if(arg == "fun") {
       
@@ -73,24 +91,7 @@ module.exports = {
        return message.channel.send(funHelp).then(m => m.delete({timeout: 5000}));
 	  
   }
-	  if(!arg){
-    let helpEmbed = new Discord.MessageEmbed()
-      .setTitle("Steve | Commands")
-      .setDescription("**Prefix:** `s!`")
-      .setColor("#0052CC")
-      .addFields(
-		  { name: 'Fun `😂`', value: '`s!help fun`' },
-      { name: 'Moderation `💻`', value: '`s!help mod`' },
-		  { name: 'Info `ℹ️`', value: '`s!help info`', inline: true },
-      { name: 'Utilities `⚙️`', value: '`s!help util`' }
-      )
-      .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
-      .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
 
-    helpEmbed.setTimestamp();
-
-    message.channel.send(helpEmbed)
-	  }
     
     
     
