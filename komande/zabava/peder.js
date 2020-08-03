@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-
+const cooldown = new Set()
 
 module.exports = {
   name: "gay",
@@ -9,6 +9,12 @@ module.exports = {
   aliases: ["peder"],
   run: async (client, message, args) => {
 
+    
+    if(cooldown.has(message.author.id)) {
+      message.reply("you have to wait 5 seconds to use this command.").then(m => m.delete({timeout: 5000}));
+    } else {
+    
+    
     var gaser = Math.floor(Math.random() * 101);
 
   let target = message.mentions.users.first() || message.author;
@@ -21,5 +27,12 @@ module.exports = {
   message.channel.send(dogembed);
 
     
+     cooldown.add(message.author.id);
+      setTimeout(() => {
+        cooldown.delete(message.author.id);
+      }, 5000); 
+      
+    }
+      
 	}
 }
