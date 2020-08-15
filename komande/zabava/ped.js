@@ -20,7 +20,7 @@ module.exports = {
   let target = message.mentions.users.first() || message.author;
 
   let dogembed = new Discord.MessageEmbed()
-  .setColor("#ff004c")
+  .setColor("#0052CC")
   .setTitle("👨‍👧‍👦 | Pedo")
   .setDescription("**" + target.username + "** is **_" + gaser + "%" + "_** pedo.")
   .setTimestamp();
