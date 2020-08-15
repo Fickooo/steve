@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const db = require("quick.db");
+const setlog = require('../model/slc')
 
 module.exports = {
   name: "ban", 
@@ -8,6 +9,8 @@ module.exports = {
   usage: "ban", 
   aliases: [""], 
   run: async (client, message, args) => {
+    
+    let info = await setlog.findOne({"_id": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -23,7 +26,7 @@ module.exports = {
     
      let logschannel = db.get(`${message.guild.id}_logchannelid`)
 
-    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === logschannel)
+    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
     
     if(!findchannel){
       message.reply("i can't send much detailes about this ban without log's channel.").then(m => m.delete({timeout: 5000}));

@@ -1,5 +1,6 @@
 const Discord = module.require('discord.js');
-const db = require("quick.db")
+const muterolech = require("../model/smt")
+const logchannelch = require("../model/slc")
 const ms = require("ms");
 
 module.exports = {
@@ -13,9 +14,9 @@ module.exports = {
     
   if(message.deletable) message.delete();  
     
-  const muteroleid = await db.fetch(`${message.guild.id}_muterole`);
+ // const muteroleid = await db.fetch(`${message.guild.id}_muterole`);
 
-const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
+//const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
   if(!message.member.hasPermission("MANAGE_MESSAGES")){
         const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
@@ -24,6 +25,9 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
     return message.channel.send(pomoc)
   } 
 
+    let mrinfo = await muterolech.findOne({"_id": String(message.guild.id)})
+
+    
   if(!args[0]){
     const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
@@ -41,8 +45,8 @@ const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
    return message.channel.send(pomoc)
   }
 
-
- let muterole = message.guild.roles.cache.find(x => x.id === muteroleid)
+ let muterole = message.guild.roles.cache.find(x => x.id === mrinfo.roleid)
+ 
 
   if(!muterole){
           const error = new Discord.MessageEmbed()
@@ -77,13 +81,15 @@ if(!mutetime){
             .setColor("#c2255c")
     message.channel.send(pomoc)
   }
-
-      let incidentiChannel = message.guild.channels.cache.find(x => x.id === logkanalid)
+    try{
+    let linfo = await logchannelch.findOne({"_id": String(message.guild.id)})
+     const incidentiChannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === linfo.channelid)
+    
         let drickEmbed = new Discord.MessageEmbed()
     .setTitle("⚠️ | Channel")
     .setDescription("I can't find the logs channel.")
     .setColor("#fc9803")
-    if(!logkanalid) message.channel.send(drickEmbed);
+    if(!linfo.channelid) message.channel.send(drickEmbed);
      if(!incidentiChannel) message.channel.send(drickEmbed);
 
   let muteembed = new Discord.MessageEmbed()
@@ -96,7 +102,9 @@ if(!mutetime){
   .setFooter("Steve | Logs", client.user.displayAvatarURL())
   .setColor("#fc0303")
   incidentiChannel.send(muteembed);
-
+    } catch(jebenierror){
+      console.log(jebenierror)
+    }
   await(tomute.roles.add(muterole));
     let uspesnoun = new Discord.MessageEmbed()
     .setTitle("✔️ | Successful")

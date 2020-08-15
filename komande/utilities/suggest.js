@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const db = require("quick.db");
+const setsuggest = require('../model/ssc')
+const mongoose = require('mongoose');
 
 module.exports = {
   name: "suggest", 
@@ -9,17 +11,19 @@ module.exports = {
   aliases: ["sugg"], 
   run: async (client, message, args) => {
    
+    let info = await setsuggest.findOne({"_id": String(message.guild.id)})
+    
     if(message.deletable) message.delete();
     
     let suggestion = args.join(" ")
     
     if(!suggestion) return message.reply("you have to suggest something.").then(m => m.delete({timeout: 5000}));
     
-    let suggestchannel = db.get(`${message.guild.id}_suggestionchannelid`);
+    //let suggestchannel = db.get(`${message.guild.id}_suggestionchannelid`);
     
-     const channel = message.guild.channels.cache.find(suggestionchannelfind => suggestionchannelfind.id === suggestchannel);
+    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
     
-    if(!channel) {
+    if(!findchannel) {
       
       let errorembed = new Discord.MessageEmbed()
        .setTitle("`❌` | Error")
@@ -36,7 +40,7 @@ module.exports = {
      .setAuthor(message.author.username, message.author.displayAvatarURL())
      .setFooter("Steve | Suggestions", client.user.displayAvatarURL())
      .setTimestamp()
-     channel.send(suggestionembed).then(embedMessage => {
+     findchannel.send(suggestionembed).then(embedMessage => {
     embedMessage.react("✅");
     embedMessage.react("❌");
        

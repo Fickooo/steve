@@ -1,6 +1,7 @@
 const { Permissions } = require('discord.js');
 const Discord = require('discord.js');
-const db = require("quick.db");
+const setlog = require('../model/slc')
+const mongoose = require('mongoose');
 
 module.exports = {
     name: "clear",
@@ -12,10 +13,18 @@ module.exports = {
       
         const amount = args.join(" ");
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("you don't have a permission to do that!");
-    
-        let logschannel = db.get(`${message.guild.id}_logchannelid`) //logs
+  
+          
+    let info = await setlog.findOne({"_id": String(message.guild.id)})
+  //  message.reply(parseInt(info.channelid))
+    //message.reply("```json\n" + info + "```")
+    //.then(result => console.log(result))
+    //.catch(err => console.error(err));
+  
+      
+      //let logschannel = db.get(`${message.guild.id}_logchannelid`) //logs
 
-        const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === logschannel) //logs
+        const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) //logs
       
         if(!amount) return message.reply('please provide an amount of messages for me to delete')
 
@@ -45,7 +54,7 @@ module.exports = {
         .addField("By:","<@" + message.author.id + ">" )
         .addField("Amount", amount)
         .setTimestamp()
-        .setFooter("OOF Logs", client.user.displayAvatarURL());
+        .setFooter("Steve | Logs", client.user.displayAvatarURL());
        findchannel.send(bigembed)
       
     message.channel.send('Success!').then(m => m.delete({timeout: 5000}));

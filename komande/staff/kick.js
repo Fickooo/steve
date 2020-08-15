@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const db = require("quick.db");
+const mongoose = require('mongoose')
+const setlogch = require('../model/slc');
 
 module.exports = {
   name: "kick", 
@@ -8,6 +9,8 @@ module.exports = {
   usage: "kick", 
   aliases: [""], 
   run: async (client, message, args) => {
+    
+    let info = await setlogch.findOne({"_id": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -21,9 +24,9 @@ module.exports = {
     
     let reason = args.join(" ").slice(22)
     
-     let logschannel = db.get(`${message.guild.id}_logchannelid`)
+    // let logschannel = db.get(`${message.guild.id}_logchannelid`)
 
-    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === logschannel)
+    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
     
     if(!findchannel){
       message.reply("i can't send much detailes about this kick without log's channel.").then(m => m.delete({timeout: 5000}));

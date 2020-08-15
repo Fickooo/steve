@@ -5,6 +5,10 @@ const fs = require("fs");
 const client = new Client({
     disableEveryone: true
 });
+const mongoose = require('mongoose');
+client.mongoose = require('./utils/mongoose');
+
+
 const activities_list = [
     "oof!help", 
     "by Otaku Devs",
@@ -39,7 +43,7 @@ client.on("message", async message => {
     if (!message.guild) return;
     if (!message.content.startsWith(prefix)) return;
 
-  
+
   let messageArray = message.content.split(" "); 
     const args = message.content.slice(prefix.length).trim().split(/ +/g); 
     const cmd = args.shift().toLowerCase(); 
@@ -94,4 +98,5 @@ client.on("message", async message => {
 
  
 
+client.mongoose.init();
 client.login(process.env.TOKEN);

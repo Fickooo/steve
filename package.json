@@ -23,7 +23,9 @@
     "common-tags": "^1.8.0",
     "os": "^0.1.1",
     "ms": "^2.1.2",
-    "moment": "^2.27.0"
+    "moment": "^2.27.0",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.27"
   },
   "engines": {
     "node": "12.x"

@@ -13,7 +13,7 @@ module.exports = {
   if(!korisnik) {
     message.reply(`${message.author}, OOF`);
   };
-  let profilna = korisnik.displayAvatarURL();
+  let profilna = korisnik.displayAvatarURL({dynamic: true});
 
   let profilnaembed = new Discord.MessageEmbed()
     .setTitle(korisnik.username + "'s Avatar")

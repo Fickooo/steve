@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const db = require("quick.db");
+const setreport = require('../model/src')
+const mongoose = require('mongoose');
 
 module.exports = {
   name: "report", 
@@ -8,6 +10,9 @@ module.exports = {
   usage: "report", 
   aliases: [""], 
   run: async (client, message, args) => {
+    
+     let info = await setreport.findOne({"_id": String(message.guild.id)})
+   //  message.reply(parseInt(info.channelid))
     
      if(message.deletable) message.delete();    
     
@@ -21,11 +26,11 @@ module.exports = {
      
      if(!reason) return message.reply("please provide a reason for that report!").then(m => m.delete({timeout: 5000}));
     
-     let reportchannel = db.get(`${message.guild.id}_reportchannelid`);
+     //let reportchannel = db.get(`${message.guild.id}_reportchannelid`);
     
-     const channel = message.guild.channels.cache.find(reportchannelfind => reportchannelfind.id === reportchannel);
+     const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
   
-     if(!channel) {
+     if(!findchannel) {
        
        let errorembed = new Discord.MessageEmbed()
         .setTitle("`❌` | Error")
@@ -45,7 +50,7 @@ module.exports = {
       .addField("`📝` Reason", reason)
       .setFooter("Steve | Reports", client.user.displayAvatarURL())
       .setTimestamp()
-     channel.send(reportembed)
+     findchannel.send(reportembed)
     
 
   } 
