@@ -9,6 +9,7 @@ module.exports = {
 
     async run (client, message, args) {
 
+  
         if(message.deletable) message.delete();
       
         const amount = args.join(" ");
@@ -17,8 +18,8 @@ module.exports = {
           
     let info = await setlog.findOne({"guildid": String(message.guild.id)})
   
-        const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) 
-      
+  const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) 
+        
         if(!amount) return message.reply('please provide an amount of messages for me to delete')
 
         if(amount > 100) return message.reply(`are you trying to OOF the whole server? You can't delete more than 100 messages.`).then(m => m.delete({timeout: 5000}));
@@ -39,7 +40,7 @@ module.exports = {
       return message.channel.send(miniembed)
       
     }
-      
+ 
        let bigembed = new Discord.MessageEmbed()
         .setTitle("`🗨️` Deleted Messages")
         .setColor("#969C9F")
@@ -51,5 +52,6 @@ module.exports = {
        findchannel.send(bigembed)
       
     message.channel.send('Success!').then(m => m.delete({timeout: 5000}));
+
       } 
 }
