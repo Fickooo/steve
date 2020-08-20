@@ -43,7 +43,7 @@ module.exports = {
         .setTitle("`✅` Success")
         .setColor("#eb3d34")
         .setDescription("You successfully deleted " + amount + " messages.")
-       message.channel.send(miniembed)
+      return message.channel.send(miniembed)
       
     }
       
