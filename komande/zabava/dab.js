@@ -1,7 +1,7 @@
 const cooldown = new Set()
 const Discord = require('discord.js');
 const Canvas = require("canvas");
-
+//ide daB
 	  //ctx.strokeRect(0, 0, canvas.width, canvas.height);
 module.exports = {
   name: "dab",
