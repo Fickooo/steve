@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const muteRole = mongoose.Schema({
-    _id: String,
-    roleid: String
+    guildid: String,
+    channelid: String
 });
 module.exports = mongoose.model('setMuterole', muteRole);

@@ -20,7 +20,7 @@ module.exports = {
  
 if(id === "update"){
   
-  let smrlog = await setmutech.findOne({"_id": String(message.guild.id)})
+  let smrlog = await setmutech.findOne({"guildid": String(message.guild.id)})
   
   let logchannelupdate = message.mentions.roles.first();
   
@@ -34,7 +34,7 @@ if(id === "update"){
   
   if(smrlog){
     
-    let smrupdate = await setmutech.findOneAndUpdate({"_id": String(message.guild.id)}, {
+    let smrupdate = await setmutech.findOneAndUpdate({"guildid": String(message.guild.id)}, {
       roleid: String(logchannelupdate.id) 
     })
     
@@ -58,7 +58,7 @@ if(id === "update"){
 }  
 
         let smr = new setmutech({
-        _id: String(message.guild.id),
+        guildid: String(message.guild.id),
         roleid: String(logchannel.id)
     });
     

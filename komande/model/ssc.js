@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const suggestLogs = mongoose.Schema({
-    _id: String,
+    guildid: String,
     channelid: String
 });
 module.exports = mongoose.model('setSuggest', suggestLogs);

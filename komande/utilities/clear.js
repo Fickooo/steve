@@ -15,16 +15,9 @@ module.exports = {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("you don't have a permission to do that!");
   
           
-    let info = await setlog.findOne({"_id": String(message.guild.id)})
-  //  message.reply(parseInt(info.channelid))
-    //message.reply("```json\n" + info + "```")
-    //.then(result => console.log(result))
-    //.catch(err => console.error(err));
+    let info = await setlog.findOne({"guildid": String(message.guild.id)})
   
-      
-      //let logschannel = db.get(`${message.guild.id}_logchannelid`) //logs
-
-        const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) //logs
+        const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) 
       
         if(!amount) return message.reply('please provide an amount of messages for me to delete')
 
@@ -33,8 +26,8 @@ module.exports = {
         if(amount < 1) return message.reply(`you know that you can delete more than 0 messages, right?`).then(m => m.delete({timeout: 5000}));
 
         await message.channel.messages.fetch({limit: amount}).then(messages => {
-            message.channel.bulkDelete(messages
-    )});
+            message.channel.bulkDelete(messages)
+        });
 
     if(!findchannel){
       message.reply("i can't send much detailes about this clear command without log's channel.").then(m => m.delete({timeout: 8000}));

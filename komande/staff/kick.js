@@ -10,7 +10,7 @@ module.exports = {
   aliases: [""], 
   run: async (client, message, args) => {
     
-    let info = await setlogch.findOne({"_id": String(message.guild.id)})
+    let info = await setlogch.findOne({"guildid": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -24,7 +24,7 @@ module.exports = {
     
     let reason = args.join(" ").slice(22)
     
-    // let logschannel = db.get(`${message.guild.id}_logchannelid`)
+    
 
     const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
     

@@ -82,7 +82,7 @@ if(!mutetime){
     message.channel.send(pomoc)
   }
     try{
-    let linfo = await logchannelch.findOne({"_id": String(message.guild.id)})
+    let linfo = await logchannelch.findOne({"guildid": String(message.guild.id)})
      const incidentiChannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === linfo.channelid)
     
         let drickEmbed = new Discord.MessageEmbed()

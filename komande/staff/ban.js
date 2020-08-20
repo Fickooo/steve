@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const db = require("quick.db");
 const setlog = require('../model/slc')
+const mongoose = require('mongoose')
 
 module.exports = {
   name: "ban", 
@@ -10,7 +10,7 @@ module.exports = {
   aliases: [""], 
   run: async (client, message, args) => {
     
-    let info = await setlog.findOne({"_id": String(message.guild.id)})
+    let info = await setlog.findOne({"guildid": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -24,7 +24,7 @@ module.exports = {
     
     let reason = args.join(" ").slice(22)
     
-     let logschannel = db.get(`${message.guild.id}_logchannelid`)
+    
 
     const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
     

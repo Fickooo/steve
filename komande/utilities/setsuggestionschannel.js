@@ -20,7 +20,7 @@ module.exports = {
  
 if(id === "update"){
   
-  let sscsuggest = await setsuggestch.findOne({"_id": String(message.guild.id)})
+  let sscsuggest = await setsuggestch.findOne({"guildid": String(message.guild.id)})
   
   let suggestchannelupdate = message.mentions.channels.first();
   
@@ -34,7 +34,7 @@ if(id === "update"){
   
   if(sscsuggest){
     
-    let sscupdate = await setsuggestch.findOneAndUpdate({"_id": String(message.guild.id)}, {
+    let sscupdate = await setsuggestch.findOneAndUpdate({"guildid": String(message.guild.id)}, {
       channelid: String(suggestchannelupdate.id) 
     })
     
@@ -60,7 +60,7 @@ if(id === "update"){
 
 
         let ssc = new setsuggestch({
-        _id: String(message.guild.id),
+        guildid: String(message.guild.id),
         channelid: String(suggestchannel.id)
     });
     

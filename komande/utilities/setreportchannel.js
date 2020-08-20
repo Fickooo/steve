@@ -20,7 +20,7 @@ module.exports = {
  
 if(id === "update"){
   
-  let srcreport = await setreportch.findOne({"_id": String(message.guild.id)})
+  let srcreport = await setreportch.findOne({"guildid": String(message.guild.id)})
   
   let reportchannelupdate = message.mentions.channels.first();
   
@@ -34,7 +34,7 @@ if(id === "update"){
   
   if(srcreport){
     
-    let srcupdate = await setreportch.findOneAndUpdate({"_id": String(message.guild.id)}, {
+    let srcupdate = await setreportch.findOneAndUpdate({"guildid": String(message.guild.id)}, {
       channelid: String(reportchannelupdate.id) 
     })
     
@@ -60,7 +60,7 @@ if(id === "update"){
 
 
         let src = new setreportch({
-        _id: String(message.guild.id),
+        guildid: String(message.guild.id),
         channelid: String(reportchannel.id)
     });
     

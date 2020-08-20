@@ -22,7 +22,7 @@ module.exports = {
  
 if(id === "update"){
   
-  let slclog = await setlogch.findOne({"_id": String(message.guild.id)})
+  let slclog = await setlogch.findOne({"guildid": String(message.guild.id)})
   
   let logchannelupdate = message.mentions.channels.first();
   
@@ -36,7 +36,7 @@ if(id === "update"){
   
   if(slclog){
     
-    let slcupdate = await setlogch.findOneAndUpdate({"_id": String(message.guild.id)}, {
+    let slcupdate = await setlogch.findOneAndUpdate({"guildid": String(message.guild.id)}, {
       channelid: String(logchannelupdate.id) 
     })
     
@@ -62,7 +62,7 @@ if(id === "update"){
 
 
         let slc = new setlogch({
-        _id: String(message.guild.id),
+        guildid: String(message.guild.id),
         channelid: String(logchannel.id)
     });
     
