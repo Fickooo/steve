@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-const db = require("quick.db");
-const setreport = require('../model/src')
+const Guild = require('../models/guild')
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -11,8 +10,31 @@ module.exports = {
   aliases: [""], 
   run: async (client, message, args) => {
     
-     let info = await setreport.findOne({"_id": String(message.guild.id)})
-   //  message.reply(parseInt(info.channelid))
+    const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
+
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
+
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
+    });
+    
+   //  let settings = await setreport.findOne({"_id": String(message.guild.id)})
+   //  message.reply(parseInt(settings.channelid))
     
      if(message.deletable) message.delete();    
     
@@ -25,10 +47,8 @@ module.exports = {
      let reason = args.join(" ").slice(22)
      
      if(!reason) return message.reply("please provide a reason for that report!").then(m => m.delete({timeout: 5000}));
-    
-     //let reportchannel = db.get(`${message.guild.id}_reportchannelid`);
-    
-     const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
+     
+     const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === settings.reportChannelId)
   
      if(!findchannel) {
        

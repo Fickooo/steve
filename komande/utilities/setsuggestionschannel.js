@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-const setsuggestch = require("../model/ssc")
+const Guild = require("../models/guild");
+const mongoose = require('mongoose');
 
 module.exports = {
   name: "ssc", 
@@ -18,53 +19,34 @@ module.exports = {
     
   let id = args.slice(1).join(" ")
  
-if(id === "update"){
   
-  let sscsuggest = await setsuggestch.findOne({"guildid": String(message.guild.id)})
-  
-  let suggestchannelupdate = message.mentions.channels.first();
-  
-  if(!suggestchannelupdate){
-                let unsuccess = new Discord.MessageEmbed()
-      .setTitle("`⛔` Error")
-      .setDescription("**You forgot to mention the channel which you want to be your new suggest channel.**")
-      .setColor("#ff0000")
-    return message.reply(unsuccess)
-  }
-  
-  if(sscsuggest){
-    
-    let sscupdate = await setsuggestch.findOneAndUpdate({"guildid": String(message.guild.id)}, {
-      channelid: String(suggestchannelupdate.id) 
-    })
-    
-        let success = new Discord.MessageEmbed()
-      .setTitle("`✅` Successfull")
-      .setDescription("You successfully updated suggest channel to **" + suggestchannelupdate.name + "**")
-      .setColor("#b4eb34")
-        
-    return message.reply(success)
-    
-  } else if(!sscsuggest){
-    
-       let unsuccess = new Discord.MessageEmbed()
-      .setTitle("`⛔` Error")
-      .setDescription("**I didn't found anything to update.**")
-      .setColor("#ff0000")
-            
-    return message.reply(unsuccess)
-  }
-  
-}  
+const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
 
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
 
-
-        let ssc = new setsuggestch({
-        guildid: String(message.guild.id),
-        channelid: String(suggestchannel.id)
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
     });
-    
-    ssc.save()
+  
+
+    await settings.updateOne({
+      suggestChannelId: suggestchannel.id
+    })
     
     let success = new Discord.MessageEmbed()
       .setTitle("`✅` Successfull")

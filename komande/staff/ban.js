@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const setlog = require('../model/slc')
 const mongoose = require('mongoose')
+const Guild = require('../models/guild');
 
 module.exports = {
   name: "ban", 
@@ -9,8 +9,29 @@ module.exports = {
   usage: "ban", 
   aliases: [""], 
   run: async (client, message, args) => {
-    
-    let info = await setlog.findOne({"guildid": String(message.guild.id)})
+
+    const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
+
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
+
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
+    });
     
     if(message.deletable) message.delete();
     
@@ -26,7 +47,7 @@ module.exports = {
     
     
 
-    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
+   const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === settings.logChannelId)
     
     if(!findchannel){
       message.reply("i can't send much detailes about this ban without log's channel.").then(m => m.delete({timeout: 5000}));
@@ -53,7 +74,6 @@ module.exports = {
       
       message.guild.member(oofovan_ban).ban(reason);
     
-    }
-
   }
+}
 

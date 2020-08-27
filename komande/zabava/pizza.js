@@ -34,6 +34,7 @@ module.exports = {
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
                                           m.edit(draw).then(mm => {
+                                             m.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error))
                                              mm.react("👍");
                                              mm.react("👎"); 
                                             
@@ -44,13 +45,37 @@ module.exports = {
                                             
                                       let draw = new Discord.MessageEmbed()
                                             .setTitle("🍕 | Pizza")//aa
-                                            .setDescription("Here's your pizza!")
+                                            .setDescription("Do you want some pepperoni? :pizza:")
                                             .setColor("RANDOM")
                                             .setImage("https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2F66225.png?v=1597606375784")
                                             .setFooter(message.author.username, message.author.displayAvatarURL())
                                             .setTimestamp()
-                                          m.edit(draw)
+                                          m.edit(draw).then(m => {
+                                              m.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error))
+                                              m.react("👍");
+                                              m.react("👎"); 
+                                          })
                                       
+                                     
+                                              m.awaitReactions((reaction, user) => user.id == message.author.id, 
+                                    { max: 1, time: 30000 }).then(collected => {
+                                    if (collected.first().emoji.name == '👍') {
+                                         
+                                            
+                                      let draw = new Discord.MessageEmbed()
+                                            .setTitle("🍕 | Pizza")//aa
+                                            .setDescription("Here's your pizza! :pizza:")
+                                            .setColor("RANDOM")
+                                            .setImage("https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2Fpizza(kcp).png?v=1597606351477")
+                                            .setFooter(message.author.username, message.author.displayAvatarURL())
+                                            .setTimestamp()
+                                          m.edit(draw).then(m.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error)));
+                                      
+                                     
+                                      
+                                    
+                                    }
+                                               })
                                       
                                     }
                                                })
@@ -93,8 +118,7 @@ module.exports = {
     })
     })
     }
-  //AAAAAAAAAA FIKSANO FIKSANO
- //KOJI KURAAAAAAAAAAAAAAAAAAAC
+  
     cooldown.add(message.author.id)
       setTimeout(() => {
         cooldown.delete(message.author.id);

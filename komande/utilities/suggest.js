@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
-const db = require("quick.db");
-const setsuggest = require('../model/ssc')
+const Guild = require('../models/guild')
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
   aliases: ["sugg"], 
   run: async (client, message, args) => {
    
-    let info = await setsuggest.findOne({"_id": String(message.guild.id)})
+//    let info = await setsuggest.findOne({"_id": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -20,8 +19,31 @@ module.exports = {
     if(!suggestion) return message.reply("you have to suggest something.").then(m => m.delete({timeout: 5000}));
     
     //let suggestchannel = db.get(`${message.guild.id}_suggestionchannelid`);
+   
+    const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
+
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
+
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 6000}));
+        }
+    });
     
-    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
+    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === settings.suggestChannelId)
     
     if(!findchannel) {
       

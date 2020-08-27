@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const mongoose = require('mongoose')
-const setlogch = require('../model/slc');
+const Guild = require('../models/guild');
 
 module.exports = {
   name: "kick", 
@@ -9,8 +9,32 @@ module.exports = {
   usage: "kick", 
   aliases: [""], 
   run: async (client, message, args) => {
+
+    //let settings = await setlogch.findOne({"guildid": String(message.guild.id)})
+     
+const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
+
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
+
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
+    });
     
-    let info = await setlogch.findOne({"guildid": String(message.guild.id)})
     
     if(message.deletable) message.delete();
     
@@ -26,7 +50,7 @@ module.exports = {
     
     
 
-    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid)
+    const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === settings.logChannelId)
     
     if(!findchannel){
       message.reply("i can't send much detailes about this kick without log's channel.").then(m => m.delete({timeout: 5000}));
@@ -52,7 +76,7 @@ module.exports = {
        findchannel.send(bigembed)
       
       message.guild.member(oofovan_kick).kick(reason);
-    
+
     }
 
   }

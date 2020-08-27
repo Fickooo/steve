@@ -8,7 +8,7 @@ module.exports = {
   usage: "oof!warn @user", 
   aliases: [""], 
   run: async (client, message, args) => {
-    
+    return
     if(message.deletable) message.delete();
     
     if(message.author.id !== "333627661874233345") return

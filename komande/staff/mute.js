@@ -1,6 +1,6 @@
-const Discord = module.require('discord.js');
-const muterolech = require("../model/smt")
-const logchannelch = require("../model/slc")
+const Discord = require('discord.js');
+const mongoose = require('mongoose')
+const Guild = require('../models/guild');
 const ms = require("ms");
 
 module.exports = {
@@ -10,13 +10,33 @@ module.exports = {
   usage: "mute", 
   aliases: [""], 
   run: async (client, message, args) => {
-    //<a:neuspesno:675279906170601473>
+
+    const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
+
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
+
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
+    });
     
   if(message.deletable) message.delete();  
     
- // const muteroleid = await db.fetch(`${message.guild.id}_muterole`);
 
-//const logkanalid = await db.fetch(`${message.guild.id}_logchannelid`);
   if(!message.member.hasPermission("MANAGE_MESSAGES")){
         const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
@@ -25,9 +45,6 @@ module.exports = {
     return message.channel.send(pomoc)
   } 
 
-    let mrinfo = await muterolech.findOne({"_id": String(message.guild.id)})
-
-    
   if(!args[0]){
     const pomoc = new Discord.MessageEmbed()
       .setTitle("`❌` | Error")
@@ -45,7 +62,7 @@ module.exports = {
    return message.channel.send(pomoc)
   }
 
- let muterole = message.guild.roles.cache.find(x => x.id === mrinfo.roleid)
+ let muterole = message.guild.roles.cache.find(x => x.id === settings.muteRoleId)
  
 
   if(!muterole){
@@ -66,7 +83,6 @@ if(!mutetime){
   return message.channel.send(pomoc)
 }
   message.delete().catch(O_o=>{});
-
   try{
     const tomutesend = new Discord.MessageEmbed()
       .setTitle("`⚪` | Mute")
@@ -81,15 +97,15 @@ if(!mutetime){
             .setColor("#c2255c")
     message.channel.send(pomoc)
   }
-    try{
-    let linfo = await logchannelch.findOne({"guildid": String(message.guild.id)})
-     const incidentiChannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === linfo.channelid)
+  
+    //let linfo = await logchannelch.findOne({"guildid": String(message.guild.id)})
+     const incidentiChannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === settings.logChannelId)
     
         let drickEmbed = new Discord.MessageEmbed()
     .setTitle("⚠️ | Channel")
     .setDescription("I can't find the logs channel.")
     .setColor("#fc9803")
-    if(!linfo.channelid) message.channel.send(drickEmbed);
+  //  if(!linfo.channelid) message.channel.send(drickEmbed);
      if(!incidentiChannel) message.channel.send(drickEmbed);
 
   let muteembed = new Discord.MessageEmbed()
@@ -102,9 +118,7 @@ if(!mutetime){
   .setFooter("Steve | Logs", client.user.displayAvatarURL())
   .setColor("#fc0303")
   incidentiChannel.send(muteembed);
-    } catch(jebenierror){
-      console.log(jebenierror)
-    }
+
   await(tomute.roles.add(muterole));
     let uspesnoun = new Discord.MessageEmbed()
     .setTitle("✔️ | Successful")
@@ -120,7 +134,6 @@ if(!mutetime){
       .setDescription(`Your mute time expired in server ${message.guild.name}.`)
     tomute.send(tomutesendd);
   }, ms(mutetime));
-
 
 
   }

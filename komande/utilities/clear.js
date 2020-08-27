@@ -1,57 +1,78 @@
-const { Permissions } = require('discord.js');
 const Discord = require('discord.js');
-const setlog = require('../model/slc')
+const Guild = require('../models/guild')
 const mongoose = require('mongoose');
 
+
 module.exports = {
-    name: "clear",
-    description: "Clears messages",
-
-    async run (client, message, args) {
-
+  name: "clear",
+  category: "Utils", 
+  description: "clear", 
+  usage: "clear", 
+  aliases: [""], 
+  run: async (client, message, args) => {
   
-        if(message.deletable) message.delete();
-      
-        const amount = args.join(" ");
-        if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply("you don't have a permission to do that!");
-  
-          
-    let info = await setlog.findOne({"guildid": String(message.guild.id)})
-  
-  const findchannel = message.guild.channels.cache.find(logchannelfind => logchannelfind.id === info.channelid) 
-        
-        if(!amount) return message.reply('please provide an amount of messages for me to delete')
+  //  let lchannel = await setlogs.findOne({"guildid": String(message.guild.id)})
+const settings = await Guild.findOne({
+        guildId: message.guild.id
+    }, (err, guild) => {
+        if (err) console.error(err)
+        if (!guild) {
+            const newGuild = new Guild({
+                    _id: mongoose.Types.ObjectId(),
+                    guildId: message.guild.id,
+                    logChannelId: "none",
+                    muteRoleId: "none",
+                    suggestChannelId: "none",
+                    reportChannelId: "none"
+            })
 
-        if(amount > 100) return message.reply(`are you trying to OOF the whole server? You can't delete more than 100 messages.`).then(m => m.delete({timeout: 5000}));
+            newGuild.save()
+           // .then(result => console.log(result))
+            .catch(err => console.error(err));
 
-        if(amount < 1) return message.reply(`you know that you can delete more than 0 messages, right?`).then(m => m.delete({timeout: 5000}));
+            console.log(`Server by name of ${message.guild.name} was not in our database, i added them now!`)
+            return message.reply("Your server was not in our database, now we added it, please repeat the command!").then(m => m.delete({timeout: 10000}));
+        }
+    });
+    
+    const messageArray = message.content.split(' ');
+	  args = messageArray.slice(1);
+    
+    //if(message.deletable) message.delete();
 
-        await message.channel.messages.fetch({limit: amount}).then(messages => {
-            message.channel.bulkDelete(messages)
-        });
+    if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send('Lack of Perms!').then(m => m.delete({timeout: 5000}));
+    
+    let deleteAmount;
 
-    if(!findchannel){
-      message.reply("i can't send much detailes about this clear command without log's channel.").then(m => m.delete({timeout: 8000}));
-       
-      let miniembed = new Discord.MessageEmbed()
-        .setTitle("`✅` Success")
-        .setColor("#eb3d34")
-        .setDescription("You successfully deleted " + amount + " messages.")
-      return message.channel.send(miniembed)
-      
+    if (isNaN(args[0]) || parseInt(args[0]) <= 0) { return message.reply('Please put a number only!').then(m => m.delete({timeout: 5000})); }
+
+    if (parseInt(args[0]) > 100) {
+        return message.reply('You can only delete 100 messages at a time!').then(m => m.delete({timeout: 5000}));
+    } else {
+        deleteAmount = parseInt(args[0]);
     }
- 
-       let bigembed = new Discord.MessageEmbed()
-        .setTitle("`🗨️` Deleted Messages")
-        .setColor("#969C9F")
-        .addField("In Channel", "<#" + message.channel.id + ">")
-        .addField("By:","<@" + message.author.id + ">" )
-        .addField("Amount", amount)
-        .setTimestamp()
-        .setFooter("Steve | Logs", client.user.displayAvatarURL());
-       findchannel.send(bigembed)
+    const lchannelid = settings.logChannelId
+    const findchannel = message.guild.channels.cache.find(findl => findl.id === lchannelid)
+    
+    if(!findchannel){
+    message.reply("i can't provide much detail because you didn't set the logs channel").then(m => m.delete({timeout: 5000}));
       
-    message.channel.send('Success!').then(m => m.delete({timeout: 5000}));
+      message.reply(`you succesfully deleted ${deleteAmount + 1} messages`).then(m => m.delete({timeout: 5000}));
+      return message.channel.bulkDelete(deleteAmount + 1, true);
+          
+    }
+      
+      message.channel.bulkDelete(deleteAmount + 1, true);
+       
+    let deletedEmbed = new Discord.MessageEmbed()
+     .setTitle("`✅` | Success")
+     .setColor("#949494")
+     .addField("In Channel", "<#" + message.channel.id + ">")
+     .addField("Deleted by", "<@" + message.author.id + ">")
+     .addField("Amount", deleteAmount)
+     .setFooter("Steve | Logs", client.user.displayAvatarURL())
+    return findchannel.send(deletedEmbed)
 
-      } 
-}
+
+  }
+}  
