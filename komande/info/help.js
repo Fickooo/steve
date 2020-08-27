@@ -71,7 +71,7 @@ module.exports = {
       let funHelp = new Discord.MessageEmbed()
        .setTitle("Steve | Utilities `⚙️`")
        .setColor("#666699")
-       .setDescription('`clear`,`slc (SetLogsChannel)`,`smr (SetMuteRole)`, `src (SetReportChannel)`,`ssc (SetSuggestionChannel)`, `report`, `suggest`')
+       .setDescription('`clear`,`slc (SetLogsChannel)`,`smr (SetMuteRole)`, `srl (SetReportLogs)`,`ssl (SetSuggestLogs)`, `report`, `suggest`, `dbdelete`')
        .setThumbnail('https://cdn.glitch.com/8f423271-964d-4b5d-a5d1-6d18b7847df0%2FScreenshot_684.png')
        .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL())
        .setTimestamp()

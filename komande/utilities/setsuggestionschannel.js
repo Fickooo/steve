@@ -3,7 +3,7 @@ const Guild = require("../models/guild");
 const mongoose = require('mongoose');
 
 module.exports = {
-  name: "ssc", 
+  name: "ssl", 
   category: "Utilities", 
   description: "setsuggestionschannel", 
   usage: "s!ssc #channel", 

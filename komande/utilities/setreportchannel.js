@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Guild = require("../models/guild");
 
 module.exports = {
-  name: "src", 
+  name: "srl", 
   category: "Utilities", 
   description: "setreportschannel", 
   usage: "s!src #channel", 
