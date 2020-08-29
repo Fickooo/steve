@@ -7,7 +7,7 @@ module.exports = async (client, message) => {
   
   
   
-let prefix = "s!"; 
+let prefix = "o!"; 
    client.emit('checkMessage', message); 
    if(message.channel.type == "dm") return; 
       if (message.author.bot) return;
