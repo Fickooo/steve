@@ -16,7 +16,7 @@ module.exports = {
     } else {
       
       
-    const subReddits = ["meme", "me_irl", "dankmeme", "memes"]
+    const subReddits = ["meme", "me_irl", "dankmeme", "Memes"]
     const random = subReddits[Math.floor(Math.random() * subReddits.length)];
     const img = await randomPuppy(random);
 
