@@ -34,7 +34,8 @@ module.exports = {
                  " - When I see your face there's not a thing I would change... Except the direction I was walking in.",
                  " - Mirros can't talk. Lucky for you, they can't laugh either.",
                  " - If I had a dollar for everytime you said something smart, I'd be broke.",
-                 " – I’m glad you got taken off of the party planning committee, if it were up to you, we’d all be watching showtunes, male strippers, or those two fruitcakes with the white tiger."]
+                 " - I’m glad you got taken off of the party planning committee, if it were up to you, we’d all be watching showtunes, male strippers, or those two fruitcakes with the white tiger.",
+                 " - You reminded me of a penny. Two-faced and not worth much."]
   
   const randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
 
