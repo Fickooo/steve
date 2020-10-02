@@ -4,10 +4,9 @@ const Guild = require('../komande/models/guild');
 
 module.exports = async (client, message) => {
   
+
   
-  
-  
-let prefix = "s!"; 
+let prefix = "o!"; 
    client.emit('checkMessage', message); 
    if(message.channel.type == "dm") return; 
       if (message.author.bot) return;
@@ -25,7 +24,8 @@ let prefix = "s!";
                     logChannelId: "none",
                     muteRoleId: "none",
                     suggestChannelId: "none",
-                    reportChannelId: "none"
+                    reportChannelId: "none",
+                    autoRoleId: "none"
             })
 
             newGuild.save()

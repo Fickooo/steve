@@ -1,5 +1,7 @@
 const Discord = require('discord.js')
 
+
+
 module.exports = async (client) => {
   
   const activities_list = [

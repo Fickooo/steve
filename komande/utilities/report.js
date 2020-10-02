@@ -21,7 +21,8 @@ module.exports = {
                     logChannelId: "none",
                     muteRoleId: "none",
                     suggestChannelId: "none",
-                    reportChannelId: "none"
+                    reportChannelId: "none",
+                    autoRoleId: "none"
             })
 
             newGuild.save()

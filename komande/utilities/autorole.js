@@ -3,18 +3,18 @@ const Guild = require("../models/guild");
 const mongoose = require('mongoose');
 
 module.exports = {
-  name: "ssl", 
+  name: "arole", 
   category: "Utilities", 
-  description: "setsuggestionschannel", 
-  usage: "s!ssc #channel", 
-  aliases: ["ssc", "setsuggestions"], 
+  description: "Set auto role", 
+  usage: "s!arole #role", 
+  aliases: ["ar", "autorole"], 
   run: async (client, message, args) => {
     
    if(message.deletable) message.delete();
     
-  let suggestchannel = message.mentions.channels.first();
-  if(!suggestchannel) return message.reply("you forgot to mention the channel boi.")
-      if(!message.member.hasPermission("MANAGE_CHANNELS")) return message.reply("you don't have permission to do that.")
+  let role = args.join(" ");
+  if(!role) return message.reply("you forgot to mention the role.")
+      if(!message.member.hasPermission("MANAGE_ROLES")) return message.reply("you don't have permission to do that.")
   
     
   let id = args.slice(1).join(" ")
@@ -46,12 +46,12 @@ const settings = await Guild.findOne({
   
 
     await settings.updateOne({
-      suggestChannelId: suggestchannel.id
+      autoRoleId: role.id
     })
     
     let success = new Discord.MessageEmbed()
       .setTitle("`✅` Successfull")
-      .setDescription("You successfully set channel **" + suggestchannel.name + "** to be your suggest's channel.")
+      .setDescription("You successfully set role **" + role.name + "** to be your auto role.")
       .setColor("#b4eb34")
     message.channel.send(success)
   }

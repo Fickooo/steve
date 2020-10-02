@@ -10,7 +10,8 @@ module.exports = async (guild, client) => {
     logChannelId: "none",
     muteRoleId: "none",
     suggestChannelId: "none",
-    reportChannelId: "none"
+    reportChannelId: "none",
+    autoRoleId: "none"
   });
 
   guild.save()
