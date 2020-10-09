@@ -19,13 +19,13 @@
     "canvas": "^2.6.1",
     "random-puppy": "^1.1.0",
     "dev-noblox": "^4.6.1",
-    "quick.db": "^7.1.1",
+    "quick.db": "^7.1.2",
     "common-tags": "^1.8.0",
     "os": "^0.1.1",
     "ms": "^2.1.2",
-    "moment": "^2.27.0",
-    "mongodb": "^3.5.9",
-    "mongoose": "^5.9.29"
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.1",
+    "mongoose": "^5.10.9"
   },
   "engines": {
     "node": "12.x"
