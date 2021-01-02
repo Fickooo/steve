@@ -1,4 +1,4 @@
-const cooldown = new Set()
+const cooldown = new Set();
 const Discord = require('discord.js');
 const Canvas = require("canvas");
 //ide daB

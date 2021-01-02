@@ -37,7 +37,7 @@ let prefix = "o!";
     });
      
   
-  let messageArray = message.content.split(" "); 
+   let messageArray = message.content.split(" "); 
     const args = message.content.slice(prefix.length).trim().split(/ +/g); 
     const cmd = args.shift().toLowerCase(); 
    client.emit('checkMessage', message); 

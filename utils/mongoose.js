@@ -11,7 +11,7 @@ module.exports = {
             family:4
         };
 
-        mongoose.connect('mongodb+srv://Kwerty:pnBG7c4MPRjt@cluster0.amdu5.mongodb.net/steve?retryWrites=true&w=majority', dbOptions);
+        mongoose.connect('mongodb+srv://Kwerty:ZTqBeY2wa3Od8hVm@cluster0.amdu5.mongodb.net/steve?retryWrites=true&w=majority', dbOptions);
         mongoose.set('useFindAndModify', false);
         mongoose.Promise = global.Promise;
       
